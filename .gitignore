@@ -20,3 +20,4 @@ JLinkLog.txt
 /OBJ/
 *.map
 *.lst
+*.uvguix.*
