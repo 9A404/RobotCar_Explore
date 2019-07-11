@@ -420,7 +420,8 @@ u8 parkMethod_pesR_noline()
 //		/*反转加速刹车*/
 //		speedAdjustment(-3500,-3500);
 //		delay_ms(20);
-		speedAdjustment(1800,1800);
+		glHello_control.linkInform.findLineWays = NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	if(0==PES_R && 1==flag)
@@ -454,7 +455,8 @@ u8 parkMethod_pesL_noline()
 //		/*反转加速刹车*/
 //		speedAdjustment(-3500,-3500);
 //		delay_ms(20);
-		speedAdjustment(1800,1800);
+		glHello_control.linkInform.findLineWays = NFL;
+		findLineFlag = 0;
 		flag = 1;
 	}
 	if(0==PES_L && 1==flag)
