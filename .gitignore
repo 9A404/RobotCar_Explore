@@ -16,7 +16,6 @@ JLinkLog.txt
 *.sct  
 *.__i  
 *.htm  
-*.uvprojx
 *.hex
 /OBJ/
 *.map
