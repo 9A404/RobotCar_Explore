@@ -1396,8 +1396,7 @@ void rotAngle_Task(controlCenterTypeDef *controlp,runStateTypeDef *runState)
 										runState->RotangleState=EIC;
 										runState->F_LineState=EIC;
 										updataState_Reset(controlp,EIC);
-                    
-                    
+                                      
 										#ifdef _DEBUG_U3_P
 										u3_printf("HL_180_EIC\r\n ");
 										#endif
