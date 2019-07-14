@@ -427,7 +427,8 @@ float Monitor_ROLL()
 //		speedAdjustment(0,0);
 //		while(1);
 		MPU6050_Pose_usart();
-		angle_read = setYaw(glYaw,-81);	
+		angle_read = setYaw(glYaw,90);
+		angle_read_back = setYaw(glYaw,-75);		
 		flag = 0;  
 		return 1;
 	}
@@ -1729,7 +1730,39 @@ u8 BlockHandleMethod_PESR(void)
 		return 0;
 }
 
+/*
 
+* 函数介绍：定时(备用)
+* 输入参数：无
+* 输出参数：无
+* 返回值  ：1(路障解决)0（路障未解决）
+* 其他		：
+* 作者    ：@断忆
+
+*/
+u8 BlockHandleMethod_TIME_45_46()
+{
+	static u8 flag=0;
+	if(0==flag)
+	{
+		Time3(START); //打开定时器
+		gl_time=0;
+		flag=1;
+	}
+	if(gl_time > 80)
+	{	
+		Time3(STOP); //关闭定时器
+		gl_time = 0;
+		flag=0;
+		#ifdef LED_Debug
+		led_flash();
+		#endif
+		return 1;
+	}
+		
+	return 0;
+
+}
 
 
 

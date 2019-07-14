@@ -93,6 +93,8 @@ extern u8 rotAngleFlag;                         //旋转方法初始化标志位
 extern u8 key0_Flag;																//按键0标志位
 extern u16 gl_time;														 		 //定时器3标志
 extern u8 runTimes;																//记录奔跑次数
+extern float angle_read;			//记录第一个翘板转弯的角度
+extern float angle_read_back;		//记录第二个翘板转弯的角度
 extern float glsensor_angle;
 extern  u8 angle_flag;
 /********************************逻辑层控制器**************************************************/

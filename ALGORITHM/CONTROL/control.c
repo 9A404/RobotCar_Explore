@@ -618,6 +618,13 @@ void roadBlocksHandle_Task(const controlCenterTypeDef *controlp,runStateTypeDef 
 											u3_printf("PARK_pesR_EIC\r\n");
 											#endif
 										}break;
+			case TIME_45_46:if(1 == BlockHandleMethod_TIME_45_46 ())		 
+								{
+									runState->F_RoadBlockState = EIC;
+									#ifdef BlueTooth_Debug
+										u3_printf("TIME_EIC_3\r\n");
+									#endif
+								}break;
 			default:  			break;
 		}
 	}
@@ -841,7 +848,7 @@ void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 												
 											}break;
 											
-			case SEEK_SeeSaw:if(1==seekNodeMethod_SeeSaw())
+			case SEEK_SeeSaw:if(1==seekNodeMethod_SeeSaw_2019())
 												{
 												runState->seekNodeState=EIC;
 												#ifdef _DEBUG_
@@ -873,6 +880,19 @@ void seekNode_Task(const controlCenterTypeDef *controlp,runStateTypeDef *runStat
 												u3_printf("SEEK_DIGL\r\n");
 												#endif
 											}break;
+			 case SEEK_SeeSaw_back:if(1==seekNodeMethod_SeeSaw_back())
+								       {
+								      	runState->seekNodeState=EIC;
+								      	#ifdef BlueTooth_Debug
+									    	u3_printf("SEEK_SeeSaw\r\n");
+								      	#endif
+										
+								      	#ifdef LED_Debug
+									    	led_flash();
+								       	#endif
+						          	}break;								
+											
+											
 			default: 		break;
 		
 		}

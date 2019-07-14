@@ -396,6 +396,114 @@ u8 seekNodeMethod_digR()
 	return 0;	
 }
 
+/*
+
+* 函数介绍：跷跷板回去找点（利用下面光电开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@袁梓聪
+
+*/
+
+u8 seekNodeMethod_SeeSaw_back()
+{
+
+//	if(1==PES_Platform) 
+//	{
+//		speedAdjustment(0,0);	
+//		delay_ms(200);
+//		speedAdjustment(0,1900);
+//		delay_ms(350);
+//		return 1;
+//	}
+//		
+//	return 0;
+	    int err,speed;
+		if(1==PES_Platform) 
+	   {
+		speedAdjustment(0,0);
+		delay_ms(200);
+		PID_Init(&glrotAnglePID,0,0,0,0,0);//对转弯PID的参数进行初始化设置，旋转PID直接传误差值
+		err=errCalculation(glYaw,angle_read_back);
+		if(err<0)err=-err;
+		while(err > 2)
+		{
+			#ifdef _NEW_MPU6050_
+			MPU6050_Pose_usart();
+			#else 
+			for(int i=0;i<50;i++) MPU6050_Pose();
+			#endif
+		    err = errCalculation(glYaw,angle_read_back);
+		    if(err<0)err=-err;
+		
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
+		speedAdjustment(0,speed+2500);
+		}
+//		speedAdjustment(0,0);
+//		while(1);
+		return 1;
+	}
+		
+	return 0;
+}
+
+
+/*
+
+* 函数介绍：跷跷板找点（利用下面光电开光）
+* 输入参数：
+* 输出参数：
+* 返回值  ：1(找到节点)0（没有找到节点）
+* 其他		：找点方法思路：检测上到平台认为到达节点
+* 作者    ：@林
+
+*/
+
+u8 seekNodeMethod_SeeSaw_2019()
+{
+
+//	if(1==PES_Platform) 
+//	{
+//		speedAdjustment(0,0);	
+//		delay_ms(200);
+//		speedAdjustment(0,1900);
+//		delay_ms(350);
+//		return 1;
+//	}
+//		
+//	return 0;
+	    int err,speed;
+		if(1==PES_Platform) 
+	   {
+		speedAdjustment(0,0);
+		delay_ms(200);
+		PID_Init(&glrotAnglePID,0,0,0,0,0);//对转弯PID的参数进行初始化设置，旋转PID直接传误差值
+		err=errCalculation(glYaw,angle_read);
+		if(err<0)err=-err;
+		while(err > 2)
+		{
+			#ifdef _NEW_MPU6050_
+			MPU6050_Pose_usart();
+			#else 
+			for(int i=0;i<50;i++) MPU6050_Pose();
+			#endif
+		    err = errCalculation(glYaw,angle_read);
+		    if(err<0)err=-err;
+		
+		speed=positionPIDCalc_rotAngle(&glrotAnglePID,err); //速度位置式PID输出,直接传入误差参数
+		speedAdjustment(0,speed+2500);
+		}
+//		speedAdjustment(0,0);
+//		while(1);
+		return 1;
+	}
+		
+	return 0;
+}
+
+
 
 
 

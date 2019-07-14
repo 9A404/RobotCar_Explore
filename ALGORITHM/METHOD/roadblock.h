@@ -26,6 +26,7 @@ u8 BlockHandleMethod_TIME(void);			 //¸´ÔÓ¾°µã
 u8 BlockHandleMethod_TIME_1(void);
 u8 BlockHandleMethod_TIME_2(void);
 u8 BlockHandleMethod_TIME_44_43(void);
+u8 BlockHandleMethod_TIME_45_46();
 
 u8 BlockHandleMethod_Trapezoid_1(void);
 u8 BlockHandleMethod_Trapezoid_2(void);	 //ÌÝÐÎ¾°µã
